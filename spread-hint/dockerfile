@@ -1,0 +1,6 @@
+FROM --platform=linux/amd64 nginx
+
+WORKDIR /app
+COPY curl-periodically.sh .
+
+CMD ["./curl-periodically.sh"]

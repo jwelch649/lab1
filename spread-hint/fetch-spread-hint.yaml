@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetch-spread-hint
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: fetch-spread-hint
+  template:
+    metadata:
+      labels:
+        app: fetch-spread-hint
+    spec:
+      topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: topology.kubernetes.io/zone
+        whenUnsatisfiable: DoNotSchedule
+        labelSelector:
+          matchLabels:
+            app: fetch-spread-hint
+      containers:
+      - name: fetchspread
+        image: public.ecr.aws/t8y7s3k5/fetch-spread-hint:latest

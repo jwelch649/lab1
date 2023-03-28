@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.kubernetes.io/topology-aware-hints: auto
+  name: nginx-spread-hint-service
+  labels:
+    app: nginx-spread-hint
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: nginx-spread-hint
