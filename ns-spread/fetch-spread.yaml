@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: fetch-spread
 spec:
-  replicas: 3
+  replicas: 12
   selector:
     matchLabels:
       app: fetch-spread
